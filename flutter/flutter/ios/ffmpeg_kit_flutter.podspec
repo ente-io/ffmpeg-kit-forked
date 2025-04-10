@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.source              = { :http => "https://github.com/ente-io/ffmpeg-kit-forked/releases/download/v6.0.0/ffmpegkit-bundled.xcframework.zip" }
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 
@@ -19,6 +18,15 @@ Pod::Spec.new do |s|
 
   s.dependency          'Flutter'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  
+  s.source = {
+    :http => "https://github.com/ente-io/ffmpeg-kit-forked/releases/download/v6.0.0/ffmpegkit-bundled.xcframework.zip"
+  }
+  
+  s.prepare_command = <<-CMD
+      unzip -o ffmpegkit-bundled.xcframework.zip || exit $?
+  CMD
+  
 
   s.subspec 'min' do |ss|
     ss.source_files         = 'Classes/**/*'
@@ -122,7 +130,7 @@ Pod::Spec.new do |s|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
     #ss.dependency 'ffmpeg-kit-ios-full-gpl', "6.0"
-    ss.vendored_frameworks = "  *.{xcframework}"
+    ss.vendored_frameworks = "*.xcframework"
     ss.ios.deployment_target = '12.1'
   end
 
