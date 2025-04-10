@@ -11,18 +11,33 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.static_framework    = true
 
+  s.source              = {
+    :http => "https://github.com/ente-io/ffmpeg-kit-forked/releases/download/v6.0.0/ffmpegkit-bundled.xcframework.zip",
+    :flatten => true
+  }
+
+  s.ios.vendored_frameworks = [
+    'ffmpegkit.xcframework',
+    'libavcodec.xcframework',
+    'libavdevice.xcframework',
+    'libavfilter.xcframework',
+    'libavformat.xcframework',
+    'libavutil.xcframework',
+    'libswresample.xcframework',
+    'libswscale.xcframework'
+  ]
+
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 
   s.default_subspec     = 'full-gpl'
 
   s.dependency          'Flutter'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
-
-  s.source = {
-    :http => "https://github.com/ente-io/ffmpeg-kit-forked/releases/download/v6.0.0/ffmpegkit-bundled.xcframework.zip"
+  s.pod_target_xcconfig = { 
+    'DEFINES_MODULE' => 'YES', 
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386'
   }
-  
+
   s.subspec 'min' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
@@ -124,17 +139,7 @@ Pod::Spec.new do |s|
   s.subspec 'full-gpl' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    #ss.dependency 'ffmpeg-kit-ios-full-gpl', "6.0"
-    ss.vendored_frameworks  = [
-      'ffmpegkit.xcframework',
-      'libavcodec.xcframework',
-      'libavdevice.xcframework',
-      'libavfilter.xcframework',
-      'libavformat.xcframework',
-      'libavutil.xcframework',
-      'libswresample.xcframework',
-      'libswscale.xcframework'
-    ]
+    # Using vendored_frameworks from root spec instead of dependency
     ss.ios.deployment_target = '12.1'
   end
 
@@ -144,5 +149,4 @@ Pod::Spec.new do |s|
     ss.dependency 'ffmpeg-kit-ios-full-gpl', "6.0.LTS"
     ss.ios.deployment_target = '10'
   end
-
 end
