@@ -50,7 +50,7 @@ jobs:
           artifacts: "prebuilt/bundle-android-aar/ffmpeg-kit/ffmpeg-kit.aar"
           omitBodyDuringUpdate: true
           omitNameDuringUpdate: true
-          draft: true
+          prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: print build logs
         if: ${{ always() }}
