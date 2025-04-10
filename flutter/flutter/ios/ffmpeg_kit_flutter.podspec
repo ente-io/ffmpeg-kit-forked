@@ -125,7 +125,16 @@ Pod::Spec.new do |s|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
     #ss.dependency 'ffmpeg-kit-ios-full-gpl', "6.0"
-    ss.vendored_frameworks = "*.xcframework"
+    ss.vendored_frameworks  = [
+      'ffmpegkit.xcframework',
+      'libavcodec.xcframework',
+      'libavdevice.xcframework',
+      'libavfilter.xcframework',
+      'libavformat.xcframework',
+      'libavutil.xcframework',
+      'libswresample.xcframework',
+      'libswscale.xcframework'
+    ]
     ss.ios.deployment_target = '12.1'
   end
 
