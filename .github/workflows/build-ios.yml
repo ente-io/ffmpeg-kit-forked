@@ -1,4 +1,4 @@
-name: apple nightly builds
+name: ios build
 
 on:
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           artifacts: "prebuilt/bundle-apple-xcframework-ios/ffmpegkit-bundled.xcframework.zip"
           omitBodyDuringUpdate: true
           omitNameDuringUpdate: true
-          draft: true
+          prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: print build logs
         if: ${{ always() }}
