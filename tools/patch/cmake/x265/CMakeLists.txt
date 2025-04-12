@@ -7,17 +7,17 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message(STATUS "cmake version ${CMAKE_VERSION}")
 if(POLICY CMP0025)
-    cmake_policy(SET CMP0025 OLD) # report Apple's Clang as just Clang
+    cmake_policy(SET CMP0025 NEW) # report Apple's Clang as just Clang
 endif()
 if(POLICY CMP0042)
     cmake_policy(SET CMP0042 NEW) # MACOSX_RPATH
 endif()
 if(POLICY CMP0054)
-    cmake_policy(SET CMP0054 OLD) # Only interpret if() arguments as variables or keywords when unquoted
+    cmake_policy(SET CMP0054 NEW) # Only interpret if() arguments as variables or keywords when unquoted
 endif()
 
 project (x265)
-cmake_minimum_required (VERSION 2.8.8) # OBJECT libraries require 2.8.8
+cmake_minimum_required (VERSION 3.5) # OBJECT libraries require 2.8.8
 include(CheckIncludeFiles)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
