@@ -23,7 +23,7 @@ jobs:
       - name: set up xcode
         run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
       - name: run the build script
-        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./ios.sh --full --enable-gpl --enable-libvidstab --enable-x264 --enable-x265 --enable-xvidcore
+        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./ios.sh --full --enable-gpl --enable-x264 --enable-x265 --enable-xvidcore
       - name: package zip
         working-directory: ./prebuilt/bundle-apple-xcframework-ios/
         run: zip -r ffmpegkit-bundled.xcframework.zip *
