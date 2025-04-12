@@ -9,10 +9,10 @@ on:
 jobs:
   build-ios-main-on-macos:
     name: ios main
-    runs-on: macos-13
+    runs-on: macos-15
     strategy:
       matrix:
-        xcode: [ '15.2' ]
+        xcode: [ '16.3' ]
     defaults:
       run:
         shell: bash
